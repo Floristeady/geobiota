@@ -47,49 +47,36 @@
 	</head>
 	<body <?php body_class(); ?>>
 	
-		<div class="clearfix" id="page">
+		<div id="content">
 				
 			<header role="banner">
-				<nav id="nav-2">
-						<?php  wp_nav_menu( array( 'container_id' => 'menu-secondary', 'theme_location' => 'secondary', 'sort_column' => 'menu_order' ) ); ?>
-				</nav>
+			
+			<?php global $geobiota_options;
+						$geobiota_settings = get_option( 'geobiota_options', $geobiota_options ); ?>
+			
+				<div id="inner-header">
 				
-				<?php global $geobiota_options;
-					$geobiota_settings = get_option( 'geobiota_options', $geobiota_options ); ?>
+					<div id="site-title">
 					
-				<hgroup id="site-title">
-				
-				<?php if( $geobiota_settings['custom_logo'] ) : ?>
-					<h1><a href="<?php echo bloginfo('url'); ?>" class="logo"><img src="<?php echo $geobiota_settings['custom_logo']; ?>" alt="<?php bloginfo('name'); ?>" /> </a></h1>
-				<?php  else : ?>
-					<h1><a href="<?php echo bloginfo('url'); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
-					<?php endif; ?>
-			  
-					<h2><?php bloginfo( 'description' ); ?></h2>
-				</hgroup>
+					<?php if( $geobiota_settings['custom_logo'] ) : ?>
+						<h1><a href="<?php echo bloginfo('url'); ?>" class="logo"><img src="<?php echo $geobiota_settings['custom_logo']; ?>" alt="<?php bloginfo('name'); ?>" /> </a></h1>
+					<?php  else : ?>
+						<h1><a href="<?php echo bloginfo('url'); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
+						<?php endif; ?>
+				  
+						<h2><?php bloginfo( 'description' ); ?></h2>
+					</div>
+					
+				</div>
+					
 				<nav id="access" role="navigation" class="clearfix">
-				  <?php /*  Allow screen readers / text browsers to skip the navigation menu and get right to the good stuff */ ?>
-					<a id="skip" href="#content" title="<?php esc_attr_e( 'Skip to content', 'geobiota' ); ?>"><?php _e( 'Skip to content', 'geobiota' ); ?></a>
-					<?php /* Our navigation menu.  If one isn't filled out, wp_nav_menu falls back to wp_page_menu.  The menu assiged to the primary position is the one used.  If none is assigned, the menu with the lowest ID is used.  */ ?>
+					<?php /* Our navigation menu.*/ ?>
 					<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
 				</nav><!-- #access -->
+
 	
 			</header>
+			
+			<div class="clearfix" id="container">
 
-			<section id="main" role="main">
-			<div id="featured-image">
-						<?php // The header image
-						  // Check if this is a post or page, if it has a thumbnail, and if it's a big one
-						if ( is_singular() &&
-							current_theme_supports( 'post-thumbnails' ) &&
-							has_post_thumbnail( $post->ID ) &&
-							( /* $src, $width, $height */ $image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' ) ) &&
-							$image[1] >= HEADER_IMAGE_WIDTH ) :
-							// Houston, we have a new header image!
-									echo get_the_post_thumbnail( $post->ID , array(970,350), array('class' => 'headerimage'));
-									elseif ( get_header_image() ) : ?>
-									<img src="<?php header_image(); ?>" class="headerimage" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="" /><!-- end headerimage -->
-						<?php endif; ?>
-					<div class="clear"></div>
-
-			</div>
+				<section id="main" role="main">

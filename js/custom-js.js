@@ -9,6 +9,8 @@ jQuery(function(jQuery) {
             classes = jQuery('img', html).attr('class');  
             id = classes.replace(/(.*?)wp-image-/, '');  
             formfield.val(id);  
+            //formfield.val(imgurl);
+            //formfield.val(formfield.val()+imgurl); 
             preview.attr('src', imgurl);  
             tb_remove();  
         }  

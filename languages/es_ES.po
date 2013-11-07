@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Twenty Eleven package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2012-10-04 15:44-0600\n"
+"PO-Revision-Date: 2013-11-07 12:23-0600\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -367,7 +367,7 @@ msgstr "Barra lateral secundaria"
 msgid "The sidebar for the optional Showcase Template"
 msgstr "La barra lateral secundaria para la plantilla opcional"
 
-#: functions.php:387
+#: functions.php:344
 msgid "Footer Area One"
 msgstr "Primer área del footer"
 
@@ -375,13 +375,17 @@ msgstr "Primer área del footer"
 msgid "An optional widget area for your site footer"
 msgstr "Una zona opcional para widgets en el footer de tu sitio"
 
-#: functions.php:398
+#: functions.php:355
 msgid "Footer Area Two"
 msgstr "Segunda área del footer"
 
-#: functions.php:430
+#: functions.php:366
 msgid "Footer Area Three"
-msgstr "Área 3 del footer"
+msgstr "Tercera área del footer"
+
+#: functions.php:477
+msgid "Footer Area Four"
+msgstr "Cuarta área del footer"
 
 #: functions.php:450 single.php:18
 msgid "Post navigation"

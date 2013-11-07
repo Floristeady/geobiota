@@ -76,10 +76,9 @@ function geobiota_setup() {
 		'primary' => __( 'Primary Navigation', 'geobiota' ),
 	) );
 	
-	register_nav_menus( array(
-		'secondary' => __( 'Secondary Navigation', 'geobiota' ),
-	) );
 	
+
+
 	// This theme allows users to set a custom background
 	global $wp_version;
 	if ( version_compare( $wp_version, '3.4', '>=' ) ) 
@@ -339,29 +338,8 @@ endif;
  * @uses register_sidebar
  */
 function geobiota_widgets_init() {
-	// Area 1, located at the top of the sidebar.
-	register_sidebar( array(
-		'name' => __( 'Main Sidebar', 'geobiota' ),
-		'id' => 'primary-widget-area',
-		'description' => __( 'Main Sidebar Widget', 'geobiota' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	) );
 
-	// Area 2, located below the Primary Widget Area in the sidebar. Empty by default.
-	register_sidebar( array(
-		'name' => __( 'Showcase Sidebar', 'geobiota' ),
-		'id' => 'secondary-widget-area',
-		'description' => __( 'The sidebar for the optional Showcase Template', 'geobiota' ),
-		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
-		'after_widget' => '</li>',
-		'before_title' => '<h4 class="widget-title">',
-		'after_title' => '</h4>',
-	) );
-
-	// Area 3, located in the footer. Empty by default.
+	// Area 1, located in the footer. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Footer Area One', 'geobiota' ),
 		'id' => 'first-footer-widget-area',
@@ -372,10 +350,32 @@ function geobiota_widgets_init() {
 		'after_title' => '</h4>',
 	) );
 
-	// Area 4, located in the footer. Empty by default.
+	// Area 2, located in the footer. Empty by default.
 	register_sidebar( array(
 		'name' => __( 'Footer Area Two', 'geobiota' ),
 		'id' => 'second-footer-widget-area',
+		'description' => __( 'An optional widget area for your site footer', 'geobiota' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h4 class="widget-title">',
+		'after_title' => '</h4>',
+	) );
+	
+	// Area 3, located in the footer. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'Footer Area Three', 'geobiota' ),
+		'id' => 'three-footer-widget-area',
+		'description' => __( 'An optional widget area for your site footer', 'geobiota' ),
+		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
+		'after_widget' => '</li>',
+		'before_title' => '<h4 class="widget-title">',
+		'after_title' => '</h4>',
+	) );
+
+	// Area 4, located in the footer. Empty by default.
+	register_sidebar( array(
+		'name' => __( 'Footer Area Four', 'geobiota' ),
+		'id' => 'four-footer-widget-area',
 		'description' => __( 'An optional widget area for your site footer', 'geobiota' ),
 		'before_widget' => '<li id="%1$s" class="widget-container %2$s">',
 		'after_widget' => '</li>',
@@ -552,6 +552,12 @@ $custom_meta_fields = array(
 		'desc'	=> 'Agregar texto columna izquierda.',
 		'id'	=> $prefix.'right',
 		'type'	=> 'textareatiny'
+	),
+	array(
+		'label'=> 'Columna Izquierda',
+		'desc'	=> 'Agregar texto columna izquierda.',
+		'id'	=> $prefix.'thum',
+		'type'	=> 'supertextareatiny'
 	)
 );
 
@@ -588,11 +594,35 @@ function show_custom_meta_box() {
 						echo '<textarea class="textareaID" name="'.$field['id'].'" id="'.$field['id'].'">'.wpautop($meta).'</textarea><br />';
 					break;
 					
+					// textarea tiny MCE
+					case 'supertextareatiny':
+						echo '<textarea class="textareaID custom_preview_image" name="'.$field['id'].'" id="'.$field['id'].'">'.$meta.'</textarea><br />';
+						
+						if ($meta) { $image = wp_get_attachment_image_src($meta, 'medium'); $image = $image[0]; }   
+						
+						echo '<input class="custom_upload_image_button button" type="button" value="Choose Image" /> 
+						
+					             <small> <a href="#" class="custom_clear_image_button">Remove Image</a></small> 
+					            <br clear="all" /><span class="description">'.$field['desc'].'';  
+					break;
+					
 					// checkbox  
 					case 'checkbox':  
 					    echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/> 
 					        <label for="'.$field['id'].'">'.$field['desc'].'</label>';  
 					break; 
+					
+					// image  
+					case 'image':  
+					$image = get_template_directory_uri().'/images/image-add.jpg';    
+					echo '<span class="custom_default_image" style="display:none">'.$image.'</span>';  
+					if ($meta) { $image = wp_get_attachment_image_src($meta, 'medium'); $image = $image[0]; }                 
+					echo    '<input name="'.$field['id'].'" type="hidden" class="custom_upload_image" value="'.$meta.'" /> 
+					        <img src="'.$image.'" class="custom_preview_image" alt="" /><br /> 
+					            <input class="custom_upload_image_button button" type="button" value="Choose Image" /> 
+					             <small> <a href="#" class="custom_clear_image_button">Remove Image</a></small> 
+					            <br clear="all" /><span class="description">'.$field['desc'].'';  
+					break;  
 					
 					// select
 					case 'select':

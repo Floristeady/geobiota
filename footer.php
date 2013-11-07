@@ -11,19 +11,22 @@
  */
 ?>
 	
-	<footer role="contentinfo">
+		</section><!-- #main -->
+	</div><!-- #container -->
+	
+	<footer role="contentinfo" id="footer">
 		<div id="footer-content">
 		
 <?php
 	/* A sidebar in the footer? Yep. You can can customize
-	 * your footer with three columns of widgets.
+	 * your footer with four columns of widgets.
 	 */
 	get_sidebar( 'footer' );
 ?>
-		</div>
+		
 	</footer><!-- footer -->
 	
-	</section><!-- #main -->
+	</div><!-- content -->
 	
 <?php
 	/* Always have wp_footer() just before the closing </body>
