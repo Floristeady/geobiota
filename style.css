@@ -117,11 +117,15 @@ textarea {
 
 /* Structure
   ========================================================================== */
+  
+#inner-header {
+	display: none;
+}
 
 #container {
 	max-width: 1170px;
 	margin: 0px auto;
-    padding: 0px;
+    padding: 0px 0px 280px;
     z-index: 0;
 }
 
@@ -367,6 +371,25 @@ a.post-edit-link:hover {
 
 /* =Content and Edit
   ========================================================================== */
+
+/*
+ * index
+ */
+
+#content article {
+	display: inline-block;
+}
+
+#article-1 .page-featured-content {
+	width: 50%;
+	float: left;
+}
+
+#article-1 .img {
+	width: 50%;
+	float: left;
+}
+
 
 /*
  * entry-content
