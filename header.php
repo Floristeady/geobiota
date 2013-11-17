@@ -55,7 +55,7 @@
 						$geobiota_settings = get_option( 'geobiota_options', $geobiota_options ); ?>
 			
 				<div id="inner-header">
-				
+
 					<div id="site-title">
 					
 					<?php if( $geobiota_settings['custom_logo'] ) : ?>
@@ -67,11 +67,46 @@
 						<h2><?php bloginfo( 'description' ); ?></h2>
 					</div>
 					
-				</div>
 					
+					<?php $args = array(
+						'post_type'	=> 'page',
+						'posts_per_page' => 1,
+						'meta_query' => array(
+							array( 'key' => 'contenido_encabezado', 'value' => '1')
+						) );
+					$page_featured = new WP_Query( $args );
+				 ?>
+				 
+				 <?php if ( $page_featured->have_posts() ) while ( $page_featured->have_posts() ) : $page_featured->the_post(); ?>
+				 
+				 
+					<div id="page-header">
+						<div class="text-content">
+						<?php the_content();?>
+						</div>
+						<a class="close" href="#">X</a>
+					</div><!-- .entry-content -->
+				
+					</div>
+					
+					<?php //Obtenemos la url de la imagen destacada
+					$domsxe = simplexml_load_string(get_the_post_thumbnail($post->ID, 'big'));
+					$thumbnailsrc = "";
+					if (!empty($domsxe))
+						$thumbnailsrc = $domsxe->attributes()->src;
+					if (!empty($thumbnailsrc)): ?>
+						
+				 	<div id="back-img">
+						<img src="<?php bloginfo('template_url') ?>/timthumb.php?src=<?php print $thumbnailsrc; ?>&w=1500&h=360"/>
+					</div>
+				
+				<?php endif; endwhile; ?>
+				
+				<?php wp_reset_postdata();?>	
+	
 				<nav id="access" role="navigation" class="clearfix">
 					<?php /* Our navigation menu.*/ ?>
-					<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary' ) ); ?>
+					<?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'primary','after'  => '<span></span>', ) ); ?>
 				</nav><!-- #access -->
 
 	

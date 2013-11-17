@@ -22,7 +22,7 @@ get_header(); ?>
 				?>
 <?php else : ?>
 					<h2><?php _e( 'No hemos encontrado lo que buscas.', 'geobiota' ); ?></h2>
-					<p><?php _e( 'Disculpa, pero tu b&uacute;squeda no ha encontrado resultado, intentalo nuevamente con otras palabras.', 'geobiota' ); ?></p>
+					<p><?php _e( 'Disculpa, pero tu b&uacute;squeda no ha encontrado resultado, inténtalo nuevamente con otras palabras.', 'geobiota' ); ?></p>
 					<?php get_search_form(); ?>
 <?php endif; ?>
 

@@ -220,7 +220,7 @@ add_filter( 'wp_page_menu_args', 'geobiota_page_menu_args' );
  * @return int
  */
 function geobiota_excerpt_length( $length ) {
-	return 40;
+	return 100;
 }
 add_filter( 'excerpt_length', 'geobiota_excerpt_length' );
 
@@ -231,7 +231,7 @@ add_filter( 'excerpt_length', 'geobiota_excerpt_length' );
  * @return string "Continue Reading" link
  */
 function geobiota_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">' . __( 'Continue reading <span class=\"meta-nav\">&rarr;</span>', 'geobiota' ) . '</a>';
+	return '';
 }
 
 /**
@@ -610,7 +610,7 @@ function save_custom_meta_frontpage ($post_id) {
 
 /**
 ********************* CUSTOM META FIELDS PAGES*****************
-*/
+
 // Add the Meta Box
 function add_custom_meta_box() {
     add_meta_box(
@@ -750,5 +750,13 @@ function save_custom_meta_one ($post_id) {
 		$new = $_POST[$field['id']];
 		update_post_meta($post_id, $field['id'], $new);
 	} // end foreach
+}*/
+
+// Add to your init function
+add_filter('get_search_form', 'my_search_form');
+ 
+function my_search_form($text) {
+     $text = str_replace('placeholder="Search for..."', 'value=""', $text);
+     return $text;
 }
 ?>

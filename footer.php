@@ -23,7 +23,11 @@
 	 */
 	get_sidebar( 'footer' );
 ?>
-		
+		</div>
+	<div class="bottom scrollup">
+		<a href="#"></a>
+	</div>
+
 	</footer><!-- footer -->
 	
 	</div><!-- content -->
