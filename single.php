@@ -11,8 +11,6 @@ get_header(); ?>
 
 <div id="content">
 
-<?php include('breadcrumbs.php'); ?>
-
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
 
 				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -26,9 +24,7 @@ get_header(); ?>
 					</div><!-- .entry-content -->
 <?php if ( get_the_author_meta( 'description' ) ) : // If a user has filled out their description, show a bio on their entries  ?>
 
-<?php endif; ?>
-   				   <?php comments_template( '', true ); ?>
- 					
+<?php endif; ?> 					
 					<footer class="entry-utility">
 						<?php geobiota_posted_in(); ?>
 					</footer><!-- .entry-utility -->

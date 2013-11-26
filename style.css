@@ -1,7 +1,7 @@
 /*
 	Theme Name: Geobiota Theme
 	Theme URI: https://github.com/floristeady/geobiota
-	Description:Theme for Geobiota company.
+	Description: Wordpress Theme for Geobiota.
 	Author URI: http://www.floristeady.com
 	Version: 1.0
 	Tags: html5, boilerplate, responsive web design, media queries, one menus, footer widget, admin panel.
@@ -109,7 +109,7 @@ textarea {
 	#Widgets
 	#Comments
     #Footer
-    #Plugins
+    #Form
     #Page Styles for MediaQueries
     #Media Queries
     #Helpers
@@ -207,10 +207,11 @@ h3 {
 }
 
 h4 {
-	color: #000;
+	color: #333333;
+	font-family: 'font-3';
 	font-size: 1em;
 	line-height: 1.125em;
-	margin: 10px 0px;
+	margin: 10px 0px 0px;
 }
 
 h5 {	
@@ -263,9 +264,10 @@ h6 {
   ========================================================================== */
 
 #inner-header {
+	display: none;
 	max-width: 1170px;
 	margin: 0 auto;
-	position: relative;
+	position: relative;	
 }
 
 #site-title {
@@ -275,6 +277,7 @@ h6 {
     margin: 0px;
     position: absolute;
     height: 360px;
+    z-index: 1;
 }
 
 #site-title h1 {
@@ -305,6 +308,7 @@ h6 {
 	position: absolute;
 	min-height: 330px;
 	padding-top: 2em;
+	z-index: 2;
 } 
 
 .text-content {
@@ -321,12 +325,17 @@ h6 {
 }
 
 #back-img {
+	display: none;
 	width: 100%;
 	overflow: hidden;
 	margin-bottom: 0;
 	position: relative;
 	height: 360px;
-	z-index: -1;
+	z-index: 0;
+}
+
+.home #back-img, .home #inner-header  {
+	display: block;
 }
 
 #back-img  img {
@@ -341,6 +350,17 @@ h6 {
 	position: absolute;
 	right: 2em;
 	z-index: 10;
+}
+
+#header-gallery li {
+	list-style: none;
+	float: left;
+	width: 100%;
+}
+
+.logo-slider {
+	width:370px;
+	height: 480px;
 }
 
 /* Links
@@ -376,17 +396,20 @@ a.post-edit-link:hover {
  * Nav-1
  */
 #access {
-	background-color: #494848;
+	background-color: #3a3a3a;
 	clear: left;
 	display: block;
 	float: left;
 	width: 100%;
 }
 
-#access .menu-header {
-	max-width: 700px;
+#access .menu-header, #access div.menu {
+	min-width: 600px;
 	margin: 0 auto;
 	text-align: center;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box;
+	box-sizing:content-box;
 }
 
 #access ul {
@@ -420,7 +443,6 @@ a.post-edit-link:hover {
 	float: left;
 	margin-left: 18px;
 	font-family: 'font-1';
-	border-bottom: 1px solid #494848;
 }
 
 #access li a:hover, #access li.current-menu-item a {
@@ -434,8 +456,6 @@ a.post-edit-link:hover {
 
 /* =Content and Edit
   ========================================================================== */
-
-
 
 /*
  * index
@@ -497,7 +517,8 @@ a.post-edit-link:hover {
 }
 
 #the-logo {
-	/*margin-right: 2%;*/
+	width: 31.6%;
+	display: block;
 }
 
 #article-1 .box-text {
@@ -521,6 +542,29 @@ a.post-edit-link:hover {
 	width: 60%;
 }
 
+.item img {		
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-ms-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+	filter:grayscale(0%); 
+	-webkit-filter: grayscale(0%);
+ 	filter: none;
+}
+
+.item img.grayscale {
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%); 
+	-o-filter: grayscale(100%);
+	filter: url(#greyscale);
+	filter: gray;
+	-webkit-filter: grayscale(1);
+ 	filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+}
+
 /*
  * page
  */
@@ -528,6 +572,38 @@ a.post-edit-link:hover {
 .content-page  article {
 	margin: 30px 0;
 	float: left;
+	width: 100%;
+}
+
+.content-page  a[href$=".PDF"] span, a[href$=".pdf"] span {
+	padding: 2px;
+	width: 20px;
+	height: 12px;
+	display: inline-block;
+	background: url("images/elements/icon_pdf.png") right center no-repeat;
+}
+
+.content-page  a[href$=".PDF"], a[href$=".pdf"]  {
+	text-transform: uppercase;
+}
+
+#team .person {
+	border-bottom: 1px solid #999999;	
+	padding: 0.7em 0px 1em;
+}
+
+#team .person img {
+	margin-bottom: 0.9em;
+}
+
+#team .person h4 {
+	margin-top: 0.5em;
+	font-size: 1.1em;
+}
+
+#team .person p {
+	margin: 0px;
+	padding:0em 26px;
 }
 
 /*
@@ -568,6 +644,20 @@ h1.entry-title {
 	list-style: none;
 }
 
+.entry-content p {
+	padding: 0.7em 26px;
+}
+
+.entry-content.no-padding p,
+.entry-content.no-padding h1,
+.entry-content.no-padding h2,
+.entry-content.no-padding h3,
+.entry-content.no-padding h4,
+.entry-content.no-padding  li {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 .entry-content h1 {
 	font-size: 1.2em;
 	margin: 10px 0 5px;
@@ -586,7 +676,6 @@ h1.entry-title {
 }
 
 .entry-content h4 {
-	font-size: 1em;
 	color: #333;
 	padding: 0 26px;
 }
@@ -744,6 +833,11 @@ h3#comments-title {
 	font-size: 1.2em;
 }
 
+#footer-content a {
+	color: #999999;
+	border-bottom: 1px solid #999999;
+}
+
 #footer-content .widget_nav_menu ul {
 	float: left;
 	list-style: none;
@@ -760,6 +854,7 @@ h3#comments-title {
 #footer-content .widget_nav_menu li a {
 	color: #000000;
 	font-size: 1.16em;
+	border: none;
 }
 
 #footer-content .widget_nav_menu li a:hover {
@@ -814,7 +909,7 @@ h3#comments-title {
 }
 
 
-/* =Plugins
+/* =Form
   ========================================================================== */
 
 form span.text {
@@ -837,57 +932,6 @@ form p {
     clear: left;
     float: left;
 }
-
-.wpcf7 form input[type="text"], 
-.wpcf7 form textarea {
-    background-color: #edf6f9;
-    border: 1px solid #bccee1;
-    color: #4F4F4F;
-    clear: left;
-    float: left;
-    padding: 4px;
-    width: 300px;
-}
-
-.wpcf7 form input[type="file"] {
-	 font-size: 0.82em;
-}
-
-.wpcf7 input[type="submit"] {
-	background-color: #83ba5a;
-}
-
-.wpcf7 input[type="submit"]:hover {
-	background-color: #719c50;
-}
-
-div.wpcf7-validation-errors {
-	background-color: #f9f6c7;
-	font-size: 0.92em;
-	padding: 6px 4px;
-	color: #403c06;
-}
-
-div.wpcf7-mail-sent-ok {
-	background-color: #c3e0b7;
-	font-size: 0.92em;
-	padding: 6px 4px;
-	color: #1c3a0f;
-}
-
-form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
-	background: none;
-	border: none;
-    color: #c03b00;
-    clear: left;
-    float: left;
-    padding: 0px;
-    font-size: 0.82em;
-    position: relative;
-    text-align: left;
-    left: 0px;
-}
-
 
 /* =Hack webkit
 ----------------------------------------------- */
@@ -969,10 +1013,6 @@ form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
 /* ==========================================================================
    Media Queries for Responsive Design.
    ========================================================================== */
-
-	@media only screen and (min-width: 35em) {
-	    /* Style adjustments for viewports that meet the condition */
-	}
 	
 	@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 	       only screen and (min-resolution: 144dpi) {
@@ -991,22 +1031,22 @@ form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
       }
       
       
-      .one_third, .two_thirds { width: 48%; }
+      .text-content p {font-size:1.2em;font-size: 1.3em;
+line-height: 1.3em;}
       
       nav#access li.current_page_item a, 
       nav#access li.current-page-ancestor a, 
       nav#nav-contact li.current_page_item a {
 	      background-color: transparent;
 	      box-shadow: inherit;
-	      color: #007FC0;
       }
-
-      nav#access { clear: left;}
-      nav#access li a {padding: 14px 11px 5px 12px;}
-      nav#nav-contact li a { margin-top: -20px;}
       
       article.page img, article.post img {
 	      max-width: 100%;
+      }
+      .home article img {
+	      width: 100%;
+	      height: auto;
       }
       
       footer img {
@@ -1028,36 +1068,76 @@ form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
 		.two_thirds,
 		.three_fourths,
 		.one_half_margin,
-		.one_fourth {width: 100% !important;}
-		.resize {display: none;}
+		.one_fourth,
+		.column_one_third,
+		.column_two_thirds,
+		.column_one_third_last {width: 100% !important;}
+		.resize, #access li span, .flex-control-nav {display: none;}
 	  
-	  #content, 
-	  #sidebar {
-		  float: none;
-		  width: 100%;
-	  }
-	        
-      nav#access li.current_page_item a, 
-      nav#access li.current-page-ancestor a, 
-      nav#nav-contact li.current_page_item a {
-	      background-color: transparent;
-	      box-shadow: inherit;
-      }
-      
-      nav#access { clear: left; width: 100%;}
+	  #content {float: none;width: 100%; margin: 0;}	  
+	  #container {padding: 0px; width: 96%; margin:0 2%;}
+	  #site-title h1 {margin: 0.8em 0.4em;}
+	  a.logo img {max-width: 80%;}
+	  #page-header {padding-top: 1em;}
+	  
+	  a.btn-menu { background-color: #3a3a3a; display: block; position: absolute; right: 0px; top:0px; width:50px; height: 43px; z-index: 10; float:right; padding-top: 7px; cursor: pointer;}
+	  a.btn-menu span { border-top: 4px solid #fff; width:60%; display: block; margin: 6px auto 1px; cursor: pointer;}
+	  a.btn-menu.expanded span {border-top-color: #616161;}
+	  nav#access { display: none; clear: left; width: 100%; padding: 2em 0;}
+	  nav#access ul { width: 90%; padding: 0 5%; text-align: left;}
       nav#access li { float: none;}
       nav#access li a {
-      	padding: 5px 0px 5px 0px; 
+      	padding: 0.7em 0px 0.8em 0em; 
       	float: left; 
+      	margin: 0;
+      	font-size: 1.4em;
       	clear: left; 
-      	border-bottom: 1px solid #e2e2e2; 
-      	width: 98%;
+      	border-bottom: 2px solid #545454; 
+      	width: 100%;
       }
       
-      #main img {
-	      width: 100%;
-	      height: auto;
+      nav#access li a:hover {
+      	border-bottom: 2px solid #545454; 
       }
+      
+      nav#access li.current_page_item a, 
+      nav#access li.current-page-ancestor a, 
+      nav#nav-contact li.current_page_item a,
+      #access li a:hover, #access li.current-menu-item a {
+	      background-color: transparent;
+	      box-shadow: inherit;
+	      border-bottom: 2px solid #545454; 
+      }
+
+      #main img {width: 100%;height: auto;}
+      	  
+	  h1 {font-size: 1.5em;}
+	  h2 {font-size: 1.6em;}
+	  .text-content {width: 92%; padding: 0 4%; margin: 80px 0 0px;float: left;}
+	  .text-content p {font-size:1.2em;font-size: 1em;
+line-height: 1.1em;}
+
+      .home article .img {height: 200px; overflow: hidden; display:block;}
+      #article-6 .page-featured-content {width: 80%;}
+      
+      .entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4,.entry-content h5, .entry-content h6, .entry-content p, h1.entry-title {
+	      padding: 0.3em 10px;
+      }
+      
+	  .entry-content h1 {font-size: 1em;}
+      
+      .entry-content li {
+		padding: 0.3em 10px;
+		border: none;
+	  }
+	  
+		.entry-content li:after {
+		   content: "  ";
+		   border-bottom: 1px solid #999999;
+		   width: 20px;
+		   padding-top:10px;
+		   display: block;
+		}
       
       #footer-content p, 
       #footer-content .textwidget, 
@@ -1065,16 +1145,20 @@ form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
 	      text-align: center;
       }
       
-      footer img {
-	 	 max-width: 99%;
-	  }
+      #footer {
+	      background: transparent;
+	      height: auto;
+	      position: relative;
+      }
       
-      footer[role="contentinfo"] {margin: 20px 0px;}
+      #footer h4 {display: none;}
+      #footer .bottom {display: none !important;}     
+      #footer .column_medium {width: 60%;margin: 0 20%;border: none; padding: 1em 0 2em;min-height: inherit;}
       
-      #footer-content .widget_nav_menu ul { float: none;}
-      
-      #footer-content .widget_nav_menu li:last-child { border: none;}
-            
+      #footer img {max-width: 99%;}
+      #footer .textwidget {font-size: 0.9em;}
+      #footer-content .widget_nav_menu ul { float: none; }      
+      #footer-content .widget_nav_menu li:last-child { border: none;}           
       #respond, #commentbox ol, #commentbox  {width: 98%; margin-right: 0px;}
 	    
     }
@@ -1099,7 +1183,7 @@ form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
 	@media all and (orientation:landscape) and (max-width: 767px)  { 
 		  /* Style adjustments for landscape mode goes here */
 		  body {
-			  font-size: 0.8em;
+			font-size: 70%;
 		  }
 
 	 }
@@ -1158,6 +1242,43 @@ form span.wpcf7-not-valid-tip, form span.wpcf7-not-valid-tip-no-ajax  {
        -o-transition-duration: 0s;
           transition-duration: 0s;
 }
+
+/* Browser Resets
+*********************************/
+.flex-container a:active,
+.flexslider a:active,
+.flex-container a:focus,
+.flexslider a:focus  {outline: none;}
+.slides,
+.flex-control-nav,
+.flex-direction-nav {margin: 0; padding: 0; list-style: none;}
+
+/* FlexSlider Necessary Styles
+*********************************/
+.flexslider {margin: 0; padding: 0;}
+.flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
+.flexslider .slides img {width: 100%; display: block;}
+.flex-pauseplay span {text-transform: capitalize;}
+
+/* Clearfix for the .slides element */
+.slides:after {content: "\0020"; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] .slides {display: block;}
+* html .slides {height: 1%;}
+
+/* No JavaScript Fallback */
+/* If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .slides > li:first-child {display: block;}
+
+
+
+/* Control Nav */
+.flex-control-nav {width: 100%; position: absolute; bottom: 0px; text-align: left; z-index:10;}
+.flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
+.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(255,255,255,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -o-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); box-shadow: inset 0 0 3px rgba(0,0,0,0.3); }
+.flex-control-paging li a:hover { background: #333; background: rgba(255,255,255,0.7); }
+.flex-control-paging li a.flex-active { background: #000; background: rgba(255,255,255,0.9); cursor: default; }
+
 
 /*
  * Image replacement

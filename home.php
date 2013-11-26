@@ -14,10 +14,45 @@ get_header(); ?>
 <div id="list-articles">
 
 
-		<article id="the-logo" class="item img one_third">
-		  <a href="<?php echo bloginfo('url'); ?>">
-			<img src="<?php bloginfo('template_url') ?>/images/elements/imagen-geobiota.jpg"/>
-		  </a>
+		<article id="the-logo" class="item one_third">
+		  <a title="<?php _e('Ir al inicio') ?>" href="<?php echo bloginfo('url'); ?>">
+
+				<?php $args = array(
+						'post_type'	=> 'page',
+						'posts_per_page' => 1,
+						'meta_query' => array(
+							array( 'key' => 'publicar_logotipos', 'value' => '1')
+						) );
+					$page_logo = new WP_Query( $args ); ?>
+					
+				<?php if ( $page_logo->have_posts() ) { ?>
+				
+				<?php while ( $page_logo->have_posts() ) : $page_logo->the_post(); ?>
+				
+				<?php  $rows = get_field('logotipos_geobiota');  ?>
+				
+						<?php if($rows) { ?>
+						
+						<?php echo '<div class="logo-slider flexslider"><ul class="slides">';
+						 
+							foreach($rows as $row) { ?>
+		
+					 		<li> <img src="<?php bloginfo('template_url') ?>/timthumb.php?src=<?php echo $row['imagen_logotipo'] ?>&w=370&h=480"/> </li>
+		
+							<?php } echo '</ul></div>';  
+							
+						}  else  { ?>
+									<img src="<?php bloginfo('template_url') ?>/images/elements/imagen-geobiota.jpg"/>  
+											
+						<?php } endwhile; ?>
+
+				<?php  } else { ?>
+				<img src="<?php bloginfo('template_url') ?>/images/elements/imagen-geobiota.jpg"/>  	<?php } ?>	
+				
+				<?php wp_reset_postdata();?>	
+	
+			</a>
+
 		</article>
 		
 		
@@ -39,9 +74,9 @@ get_header(); ?>
 			<?php if ( $page_featured->have_posts() ) while ( $page_featured->have_posts() ) : $page_featured->the_post(); ?>
 			
 			<?php if ($i == 1): ?>
-			<article id="article-1" class="post-1 item img-text two_thirds no-margin margin-30 post-<?php the_ID(); ?>">
+			<article id="article-1" class="post-1 item text one_third margin-30 post-<?php the_ID(); ?>">
 				
-				<div class="box-text one_half_margin">
+				<div class="box-text">
 					<div class="page-featured-content text">
 						<?php 		
 						 $content = $post->post_excerpt;
@@ -52,7 +87,10 @@ get_header(); ?>
 						<p class="entry-title"><span><?php the_title(); ?></span></p>
 					</div><!-- .entry-content -->
 				</div>
-
+				
+			</article><!-- #post-## -->
+			
+			<article id="article-1" class="post-1 item img one_third no-margin margin-30 post-<?php the_ID(); ?>">	
 				 <?php //Obtenemos la url de la imagen destacada
 					$domsxe = simplexml_load_string(get_the_post_thumbnail($post->ID, 'big'));
 					$thumbnailsrc = "";
@@ -60,7 +98,7 @@ get_header(); ?>
 						$thumbnailsrc = $domsxe->attributes()->src;
 					if (!empty($thumbnailsrc)):
 				?>
-				<span class="img one_half">
+				<span class="img">
 					<img src="<?php bloginfo('template_url') ?>/timthumb.php?src=<?php print $thumbnailsrc; ?>&w=368&h=226"/>
 				</span>			
 				<?php endif; //end ?>

@@ -24,7 +24,7 @@
 	get_sidebar( 'footer' );
 ?>
 		</div>
-	<div class="bottom scrollup">
+	<div class="bottom scrollup resize">
 		<a href="#"></a>
 	</div>
 
