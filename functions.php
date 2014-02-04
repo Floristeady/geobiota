@@ -75,41 +75,8 @@ function geobiota_setup() {
 	register_nav_menus( array(
 		'primary' => __( 'Primary Navigation', 'geobiota' ),
 	) );
+
 	
-	
-
-
-	// This theme allows users to set a custom background
-	global $wp_version;
-	if ( version_compare( $wp_version, '3.4', '>=' ) ) 
-     	add_theme_support( 'custom-background' ); 
-    else
-	add_custom_background( $args );
-	
-	// This theme allows users to set a custom header
-	global $wp_version;
-	if ( version_compare( $wp_version, '3.4', '>=' ) )
-		add_theme_support( 'custom-header' );
-	else
-		add_custom_image_header( $args );
-		
-	$defaults = array(
-	'default-image'          => get_template_directory_uri() . '/images/headers/header_01.jpg',
-	'random-default'         => false,
-	'width'                  => 970,
-	'height'                 => 220,
-	'flex-height'            => false,
-	'flex-width'             => false,
-	'default-text-color'     => '',
-	'header-text'            => false,
-	'uploads'                => true,
-	'wp-head-callback'       => '',
-	'admin-head-callback'    => '',
-	'admin-preview-callback' => '',
-	);
-	add_theme_support( 'custom-header', $defaults );
-
-
 	}
 endif;
 

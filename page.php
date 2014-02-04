@@ -65,10 +65,12 @@ get_header(); ?>
 			</div>
 		</div>
 		
-		<div class="column_one_third_last margin-30">	
+		<div class="column_one_third_last only-img margin-30">
+			<div class="entry-content">
 			<?php if( get_field('imagen_vertical') ): ?>
 				<img src="<?php bloginfo('template_url') ?>/timthumb.php?src=<?php the_field('imagen_vertical'); ?>&w=370&h=482" alt="" />
 			<?php endif;?>
+			</div>
 		</div>
 		
 		<div class="column_one_third">	
@@ -82,12 +84,12 @@ get_header(); ?>
 		</div>
 
 	 
-		<div class="column_two_thirds margin-30">	
-		
+		<div class="column_two_thirds only-img margin-30">	
+		  <div class="entry-content">
 			<?php if( get_field('imagen_horizontal') ): ?>
 				<img src="<?php bloginfo('template_url') ?>/timthumb.php?src=<?php the_field('imagen_horizontal'); ?>&w=770&h=242" alt="" />
 			<?php endif;?>
-			
+		  </div>
 		</div>
 		
 		

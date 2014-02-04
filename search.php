@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-<div id="content" style="margin-top:30px;">
+<div id="content" style="margin-top:30px;" class="page-search">
 
 <?php if ( have_posts() ) : ?>
 				<h1><?php printf( __( 'Resultados para: %s', 'geobiota' ), '' . get_search_query() . '' ); ?></h1>

@@ -27,6 +27,7 @@
 			
 	    <meta name="description" content="<?php echo '' . get_bloginfo ( 'description' );  ?>">
 		<link rel="profile" href="http://gmpg.org/xfn/11" />
+		<link rel="stylesheet" href="<?php bloginfo('template_url') ?>/css/fontello.css">
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_directory'); ?>/css/normalize.css" />
 	    <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 		<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />

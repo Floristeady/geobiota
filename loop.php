@@ -23,7 +23,7 @@
 <?php if ( $wp_query->max_num_pages > 1 ) : ?>
 	<nav id="nav-above" class="navigation">
 		<div class="nav-previous"><?php next_posts_link( __( '<span class=\"meta-nav\">&larr;</span> Older posts', 'geobiota' ) ); ?></div>
-		<div class="nav-next"><?php previous_posts_link( __( '<span class=\"meta-nav\">&larr;</span> Entradas más antiguas', 'geobiota' ) ); ?></div>
+		<div class="nav-next"><?php previous_posts_link( __( '<span class=\"meta-nav\">&larr;</span> Entradas mÃ¡s antiguas', 'geobiota' ) ); ?></div>
 	</nav><!-- #nav-above -->
 <?php endif; ?>
 
@@ -124,11 +124,7 @@
 	<?php else : ?>
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<h2 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Ir a %s', 'geobiota' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
-
-			<div class="entry-meta">
-				<?php geobiota_posted_on(); ?>
-			</div><!-- .entry-meta -->
-
+			
 	<?php if ( is_archive() || is_search() ) : // Only display excerpts for archives and search. ?>
 			<div class="entry-summary">
 				<?php the_excerpt(); ?>

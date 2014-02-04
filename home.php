@@ -15,7 +15,7 @@ get_header(); ?>
 
 
 		<article id="the-logo" class="item one_third">
-		  <a title="<?php _e('Ir al inicio') ?>" href="<?php echo bloginfo('url'); ?>">
+		  <a title="" href="<?php echo bloginfo('url'); ?>">
 
 				<?php $args = array(
 						'post_type'	=> 'page',
@@ -81,10 +81,13 @@ get_header(); ?>
 						<?php 		
 						 $content = $post->post_excerpt;
 						 $content = strip_tags($content);
-						 $content = substr($content, 0, 120);
-						 echo '<h2>' . $content . '</h2>'; 
-						?>
-						<p class="entry-title"><span><?php the_title(); ?></span></p>
+						 $content = substr($content, 0, 120); ?>
+						 
+						 <a title="" href="<?php the_permalink(); ?>">
+						 	<h2><?php echo $content ?></h2>
+						
+						 	<p class="entry-title"><span><?php the_title(); ?></span></p>
+						</a>
 					</div><!-- .entry-content -->
 				</div>
 				
@@ -151,16 +154,18 @@ get_header(); ?>
 					<?php 		
 					 $content = $post->post_excerpt;
 					 $content = strip_tags($content);
-					 $content = substr($content, 0, 120);
-					 echo '<h2>' . $content . '</h2>'; 
-					?>
-					<p class="entry-title"><span><?php the_title(); ?></span></p>
+					 $content = substr($content, 0, 120);?>
+					  
+					<a title="" href="<?php the_permalink(); ?>">
+						<h2><?php echo $content ?></h2>
+						<p class="entry-title"><span><?php the_title(); ?></span></p>
+					</a>
 				</div><!-- .entry-content -->
 				 
 			</article><!-- #post-## -->
 			<?php elseif ($i == 2) :?>
 				
-		    <article id="article-4" class="post-3 item one_img one_third no-margin post-<?php the_ID(); ?>">
+		    <article id="article-4" class="post-3 img item one_img one_third no-margin post-<?php the_ID(); ?>">
 				
 				 <?php //Obtenemos la url de la imagen destacada
 					$domsxe = simplexml_load_string(get_the_post_thumbnail($post->ID, 'big'));
@@ -204,10 +209,12 @@ get_header(); ?>
 					<?php 		
 					 $content = $post->post_excerpt;
 					 $content = strip_tags($content);
-					 $content = substr($content, 0, 120);
-					 echo '<h2>' . $content . '</h2>'; 
-					?>
-					<p class="entry-title"><span><?php the_title(); ?></span></p>
+					 $content = substr($content, 0, 120);?>
+
+					<a title="" href="<?php the_permalink(); ?>">
+					    <h2><?php echo $content ?></h2>
+						<p class="entry-title"><span><?php the_title(); ?></span></p>
+					</a>
 				</div><!-- .entry-content -->
 								
 			</article><!-- #post-## -->
@@ -233,7 +240,7 @@ get_header(); ?>
 			
 			<?php if ( $page_featured->have_posts() ) while ( $page_featured->have_posts() ) : $page_featured->the_post(); ?>
 			
-			<article id="article-6" class="post-4 item img-text post-<?php the_ID(); ?>">
+			<article id="article-6" class="post-4 img item img-text post-<?php the_ID(); ?>">
 	
 				 <?php //Obtenemos la url de la imagen destacada
 					$domsxe = simplexml_load_string(get_the_post_thumbnail($post->ID, 'big'));
@@ -253,10 +260,12 @@ get_header(); ?>
 						<?php 		
 						 $content = $post->post_excerpt;
 						 $content = strip_tags($content);
-						 $content = substr($content, 0, 120);
-						 echo '<h2>' . $content . '</h2>'; 
-						?>
-						<p class="entry-title"><span><?php the_title(); ?></span></p>
+						 $content = substr($content, 0, 120);?>
+
+						<a title="" href="<?php the_permalink(); ?>">
+							<h2><?php echo $content ?></h2>
+							<p class="entry-title"><span><?php the_title(); ?></span></p>
+						</a>
 					</div><!-- .entry-content -->
 				</div>
 			 

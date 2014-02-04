@@ -4,7 +4,7 @@
 	Description: Wordpress Theme for Geobiota.
 	Author URI: http://www.floristeady.com
 	Version: 1.0
-	Tags: html5, boilerplate, responsive web design, media queries, one menus, footer widget, admin panel.
+	Tags: html5,responsive web design, media queries, one menus, footer widget, admin panel.
 */
 
 /* ==========================================================================
@@ -107,7 +107,6 @@ textarea {
 	#Navigation
 	#Content and Edit
 	#Widgets
-	#Comments
     #Footer
     #Form
     #Page Styles for MediaQueries
@@ -149,15 +148,14 @@ textarea {
 
 @font-face {
     font-family: 'font-3';
-    src: url('fonts/foundersgrotesktext-bold.eot');
-    src: url('fonts/foundersgrotesktext-bold.eot?#iefix') format('embedded-opentype'),
-         url('fonts/foundersgrotesktext-bold.woff') format('woff'),
-         url('fonts/foundersgrotesktext-bold.ttf') format('truetype'),
-         url('fonts/foundersgrotesktext-bold.svg#font-3') format('svg');
+    src: url('fonts/foundersgrotesktext-medium.eot');
+    src: url('fonts/foundersgrotesktext-medium.eot?#iefix') format('embedded-opentype'),
+         url('fonts/foundersgrotesktext-medium.woff') format('woff'),
+         url('fonts/foundersgrotesktext-medium.ttf') format('truetype'),
+         url('fonts/foundersgrotesktext-medium.svg#font-3') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-
 
 p, li {
 	color: #000;
@@ -226,7 +224,6 @@ h6 {
 	font-size: 0.825em;
 }
 
-
 /* Structure
   ========================================================================== */
   
@@ -276,7 +273,6 @@ h6 {
     display: block;
     margin: 0px;
     position: absolute;
-    height: 360px;
     z-index: 1;
 }
 
@@ -287,7 +283,7 @@ h6 {
     font-size: 2.1em;
     font-weight: bold;
     line-height: 1.2em;
-    margin: 4.5em 0em 0 2.5em
+    margin: 4em 0em 0 2.5em
 }
 
 #site-title h2 {
@@ -306,7 +302,7 @@ h6 {
 #page-header {
 	width: 100%;
 	position: absolute;
-	min-height: 330px;
+	min-height: 300px;
 	padding-top: 2em;
 	z-index: 2;
 } 
@@ -344,8 +340,8 @@ h6 {
 }
 
 #page-header  .close {
-	font-size: 2em;
-	bottom: 0.2em;
+	font-size: 1.6em;
+	bottom: -0.5em;
 	color: #fff;
 	position: absolute;
 	right: 2em;
@@ -359,7 +355,7 @@ h6 {
 }
 
 .logo-slider {
-	width:370px;
+	max-width:370px;
 	height: 480px;
 }
 
@@ -453,6 +449,9 @@ a.post-edit-link:hover {
 	display: none;
 }
 
+.home #access .home {
+	display: none;
+}
 
 /* =Content and Edit
   ========================================================================== */
@@ -542,7 +541,7 @@ a.post-edit-link:hover {
 	width: 60%;
 }
 
-.item img {		
+.item.img img {		
 	-webkit-transition: all 0.5s ease-out;
 	-moz-transition: all 0.5s ease-out;
 	-ms-transition: all 0.5s ease-out;
@@ -553,7 +552,7 @@ a.post-edit-link:hover {
  	filter: none;
 }
 
-.item img.grayscale {
+.item.img img.grayscale {
 	filter: grayscale(100%);
 	-webkit-filter: grayscale(100%);
 	-moz-filter: grayscale(100%);
@@ -665,6 +664,10 @@ h1.entry-title {
 	font-family: 'font-3';
 }
 
+.entry-content p strong {
+	font-family: 'font-3';
+}
+
 .entry-content h2 {
 	color: #333;
 	padding: 0 26px;
@@ -706,6 +709,11 @@ h1.entry-title {
 	clear: left;
 }
 
+.page-search article {
+	clear: both;
+	margin-bottom: 3em;
+}
+
 /* =Widgets
   ========================================================================== */
 
@@ -713,70 +721,6 @@ h1.entry-title {
 	margin: 0px;
 	padding: 0px;
 	list-style: none outside none;
-}
-
-/* =Comments
-  ========================================================================== */
-
-#respond {
-	margin-top: 20px;
-	float: left;
-}
-
-#respond h3 {
-	border-bottom: 1px dotted #777;
-	font-size: 1em;
-}
-
-h3#comments-title {
-	font-size: 0.92em;
-	margin-top: 30px;
-}
-
-.comment-body p {
-	font-size: 0.96em;
-}
-
-#commentform label {
-	float: left;
-    margin-right: 10px;
-    width: 120px;
-    font-size: 0.92em;
-}
-
-#commentbox ol {
-	padding: 0px;
-}
-
-#commentbox ol li {
-	background-color: #f7f7f7;
-    display: block;
-    float: left;
-    margin-right: 5%;
-    padding: 10px 20px;
-    width: 95%;
-    margin-bottom: 10px;
-}
-
-#commentbox ol .comment-meta {
-	margin-top: 5px;
-	font-size: 0.82em;
-}
-
-#commentbox ol .reply a{
-	font-size:  0.82em;
-	text-decoration: underline;
-}
-
-#commentbox ol ul.children {
-	clear: left;
-	margin-top: 10px;
-}
-
-#commentbox article {
-	width: 100%;
-	margin: 0px;
-	float: none;
 }
 
 /* =Footer
@@ -805,6 +749,12 @@ h3#comments-title {
 	border-bottom: 1px solid #000;
 	padding-bottom: 0.5em;
 	width: 20px;
+	margin-top: -2px;
+}
+
+#footer-content .column_big .textwidget {
+	font-size: 0.94em;
+	line-height: 1.2em;
 }
 
 #footer-content .column_small {
@@ -831,6 +781,16 @@ h3#comments-title {
 
 #footer-content h4 {
 	font-size: 1.2em;
+	color: #000000;
+}
+
+#footer-content .widget_search h4, #footer-content .column_medium h4 {
+	margin: 0px;
+	font-family: 'font-1';
+}
+
+#footer-content .widget_search h4 {
+	margin-bottom: 10px;
 }
 
 #footer-content a {
@@ -847,7 +807,7 @@ h3#comments-title {
 
 #footer-content .widget_nav_menu li {
 	display: block;
-	padding: 5px 8px 5px 6px;
+	padding: 0px 8px 5px 8px;
 	clear: both;
 }
 
@@ -858,11 +818,16 @@ h3#comments-title {
 }
 
 #footer-content .widget_nav_menu li a:hover {
-	text-decoration: underline;
+	border-bottom: 1px solid #000; 
+	padding-bottom: 0px;
 }
 
 #footer-content p, 
-#footer-content .textwidget, 
+#footer-content .textwidget {
+	color: #000000;
+	font-size: 0.9em;
+}
+
 #footer-content li {
 	color: #000000;
 }
@@ -870,18 +835,36 @@ h3#comments-title {
 #footer-content input[type=search] {
 	background-color: #7f7f7f;
 	border: none;
-	padding: 10px 5px 10px 26px;
+	padding: 10px 5px 10px 32px;
 	width: 85%;
 	background-image: url(images/elements/search.svg);
 	background-repeat: no-repeat;
-	background-position: 0px;
+	background-position: 5px;
+}
+
+form .screen-reader-text, form #searchsubmit {
+	display: none;
+}
+
+form input[type="search"] {
+	width: 200px;
+	background-color:  #c5c5c5;
+	border: none;
+	padding: 10px 5px 10px 32px;
+	background-image: url(images/elements/search.svg);
+	background-repeat: no-repeat;
+	background-position: 5px;
+}
+
+#footer-content .textwidget {
+	margin-top: 10px;
 }
 
 #footer-content input[type=submit] {
 	display: none;
 }
 
-#footer-content input[type=search]:focus {
+#footer-content input[type=search]:focus, form input[type="search"]:focus {
 	outline: none;
 	background-color: #8f8f8f;
 }
@@ -907,6 +890,62 @@ h3#comments-title {
 	display: block;
 	background-image: url(images/elements/arrow-up.svg);
 }
+
+
+ul.social {
+	clear: left;
+	float: left;
+	list-style: none;
+	padding: 0px;
+	margin: 20px 0 0;
+}
+
+ul.social li {
+	float: left;
+	margin-right: 0px;
+	font-size: 18px;
+	list-style: none;
+}
+
+ul.social li a {
+	font-weight: bold;
+	display: inline-block;
+	background-image: url(images/elements/icons.png);
+	width: 40px;
+	height: 43px;
+	text-indent: -999em;
+	float: left;
+	border: 0px !important;
+}
+
+ul.social li a:hover {
+	opacity: 0.8;
+}
+
+ul.social li a.email {
+	background-position: 0px 0px;
+}
+
+ul.social li a.skype {
+	background-position: 43px 0px;
+}
+
+ul.social li a.drop {
+	background-position: 85px 0px;
+}
+
+ul.social li a.link {
+	background-position:130px 0px;
+}
+
+ul.social li a.tum {
+	background-position:174px 0px;
+}
+
+ul.social li a.rss {
+	background-position:218px 0px;
+}
+
 
 
 /* =Form
@@ -937,7 +976,9 @@ form p {
 ----------------------------------------------- */
 
 @media screen and (-webkit-min-device-pixel-ratio:0) {
-	
+	.logo-slider.flexslider li img {
+		width: auto;
+	}
 }
 
 /* =Hack mozilla firefox
@@ -1030,9 +1071,10 @@ form p {
 	      min-height: 145px;
       }
       
+      .logo-slider { width: 100%; height: auto;}
       
-      .text-content p {font-size:1.2em;font-size: 1.3em;
-line-height: 1.3em;}
+      
+      .text-content p {font-size:1.2em;line-height: 1.3em;}
       
       nav#access li.current_page_item a, 
       nav#access li.current-page-ancestor a, 
@@ -1051,6 +1093,10 @@ line-height: 1.3em;}
       
       footer img {
 	 	 max-width: 99%;
+	  }
+	  
+	  .logo-slider.flexslider li img {
+		width: 100%;
 	  }
 	  
 
@@ -1079,11 +1125,18 @@ line-height: 1.3em;}
 	  #site-title h1 {margin: 0.8em 0.4em;}
 	  a.logo img {max-width: 80%;}
 	  #page-header {padding-top: 1em;}
+	  .home #back-img, .home .inner-header {
+		  display: none;
+	  }
+	  
+	  #the-logo {margin-bottom: 0px;}
+	  .logo-slider { width: 100%; height: auto; max-width:inherit;}
 	  
 	  a.btn-menu { background-color: #3a3a3a; display: block; position: absolute; right: 0px; top:0px; width:50px; height: 43px; z-index: 10; float:right; padding-top: 7px; cursor: pointer;}
 	  a.btn-menu span { border-top: 4px solid #fff; width:60%; display: block; margin: 6px auto 1px; cursor: pointer;}
 	  a.btn-menu.expanded span {border-top-color: #616161;}
 	  nav#access { display: none; clear: left; width: 100%; padding: 2em 0;}
+	  #access .menu-header, #access div.men {width:100% !important; min-width: inherit;}
 	  nav#access ul { width: 90%; padding: 0 5%; text-align: left;}
       nav#access li { float: none;}
       nav#access li a {
@@ -1114,15 +1167,22 @@ line-height: 1.3em;}
 	  h1 {font-size: 1.5em;}
 	  h2 {font-size: 1.6em;}
 	  .text-content {width: 92%; padding: 0 4%; margin: 80px 0 0px;float: left;}
-	  .text-content p {font-size:1.2em;font-size: 1em;
-line-height: 1.1em;}
+	  .text-content p {font-size:1.05em;line-height: 1.1em;}
+	  .entry-content ul {margin: 0em 0px 1em 0;}
 
       .home article .img {height: 200px; overflow: hidden; display:block;}
       #article-6 .page-featured-content {width: 80%;}
       
       .entry-content h1, .entry-content h2, .entry-content h3, .entry-content h4,.entry-content h5, .entry-content h6, .entry-content p, h1.entry-title {
-	      padding: 0.3em 10px;
+	      padding: 0.3em 3%;
       }
+      
+      #main .only-img .entry-content img {
+	      width: 94%;
+	      padding:0 3%;
+      }
+      
+      .entry-content.no-padding p, .entry-content.no-padding h1, .entry-content.no-padding h2, .entry-content.no-padding h3, .entry-content.no-padding h4, .entry-content.no-padding li, .page .entry-excerpt {padding: 0.3em 3%;}
       
 	  .entry-content h1 {font-size: 1em;}
       
@@ -1273,9 +1333,10 @@ html[xmlns] .slides {display: block;}
 
 
 /* Control Nav */
-.flex-control-nav {width: 100%; position: absolute; bottom: 0px; text-align: left; z-index:10;}
+.flex-control-nav {max-width: 1170px; margin: 0 auto; position: relative; bottom: 30px; text-align: left; z-index:10;}
 .flex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
-.flex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(255,255,255,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -o-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); box-shadow: inset 0 0 3px rgba(0,0,0,0.3); }
+.flex-control-nav li:first-child {padding-left: 10em;}
+.flex-control-paging li a {width: 9px; height: 9px; display: block; background: #666; background: rgba(255,255,255,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 14px; -moz-border-radius: 14px; -o-border-radius: 14px; border-radius: 14px; -webkit-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -o-box-shadow: inset 0 0 3px rgba(255,255,255,0.5); box-shadow: inset 0 0 3px rgba(0,0,0,0.3); }
 .flex-control-paging li a:hover { background: #333; background: rgba(255,255,255,0.7); }
 .flex-control-paging li a.flex-active { background: #000; background: rgba(255,255,255,0.9); cursor: default; }
 
